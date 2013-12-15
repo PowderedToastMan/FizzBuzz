@@ -7,16 +7,14 @@ class Fizzbuzz
     @max = max
   end
 
-  # returns an array of strings
+  # returns string
   def string
-    1.upto(@max).map do |n|
-      calc(n)
-    end
+    array.join ","
   end
 
   # returns json hash
   def json
-    JSON.generate(hash(@max))
+    JSON.generate(hash)
   end
 
   private
@@ -27,7 +25,13 @@ class Fizzbuzz
     n
   end
 
-  def hash(n)
+  def array
+    1.upto(@max).map do |n|
+      calc(n)
+    end
+  end
+
+  def hash
     h = Hash.new
     1.upto(@max).map do |n|
       h[n] = calc(n)
@@ -37,4 +41,4 @@ class Fizzbuzz
 end
 
 fb = Fizzbuzz.new(30)
-puts fb.json
+puts fb.string
