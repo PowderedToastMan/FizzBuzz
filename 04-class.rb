@@ -1,5 +1,7 @@
 #! /usr/bin/env ruby
 
+require 'json'
+
 class Fizzbuzz
   def initialize(max)
     @max = max
@@ -11,6 +13,12 @@ class Fizzbuzz
       calc(n)
     end
   end
+
+  # returns json hash
+  def json
+    JSON.generate(hash(@max))
+  end
+
 
   private
   def calc(n)
@@ -24,7 +32,15 @@ class Fizzbuzz
       n
     end
   end
+
+  def hash(n)
+    h = Hash.new
+    1.upto(@max).map do |n|
+      h[n] = calc(n)
+    end
+    h
+  end
 end
 
 fb = Fizzbuzz.new(30)
-puts fb.string
+puts fb.json
