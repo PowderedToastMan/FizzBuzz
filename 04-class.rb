@@ -19,10 +19,10 @@ class Fizzbuzz
 
   private
   def calc(n)
-    "FizzBuzz" if n % 15 == 0
-    "Fizz"     if n % 3 == 0
-    "Buzz"     if n % 5 == 0
-    n
+    return "FizzBuzz" if n % 15 == 0
+    return "Fizz"     if n % 3 == 0
+    return "Buzz"     if n % 5 == 0
+    return n
   end
 
   def array
