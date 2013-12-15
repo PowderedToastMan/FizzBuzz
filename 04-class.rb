@@ -14,7 +14,7 @@ class Fizzbuzz
 
   # returns json hash
   def json
-    JSON.generate(hash)
+    JSON.pretty_generate(hash)
   end
 
   private
@@ -41,4 +41,4 @@ class Fizzbuzz
 end
 
 fb = Fizzbuzz.new(30)
-puts fb.string
+puts fb.json
