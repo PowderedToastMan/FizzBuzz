@@ -17,6 +17,18 @@ class Fizzbuzz
     JSON.pretty_generate(hash)
   end
 
+  # return html
+  def html
+    ["<table border=\"1\">",
+    1.upto(@max).map do |n|
+      ["  <tr>",
+       "    <td>#{n}</td>",
+       "    <td>#{calc(n)}</td>",
+       "  </tr>"]
+    end,
+     "</table>"].join("\n")
+  end
+
   private
   def calc(n)
     return "FizzBuzz" if n % 15 == 0
@@ -41,4 +53,4 @@ class Fizzbuzz
 end
 
 fb = Fizzbuzz.new(30)
-puts fb.json
+puts fb.html
