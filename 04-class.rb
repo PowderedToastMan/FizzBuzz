@@ -8,17 +8,17 @@ class Fizzbuzz
   end
 
   # returns string
-  def string
+  def to_string
     array.join ","
   end
 
   # returns json hash
-  def json
+  def to_json
     JSON.pretty_generate(hash)
   end
 
   # return html
-  def html
+  def to_html
     ["<table border=\"1\">",
     1.upto(@max).map do |n|
       ["  <tr>",
@@ -53,4 +53,4 @@ class Fizzbuzz
 end
 
 fb = Fizzbuzz.new(30)
-puts fb.html
+puts fb.to_html
