@@ -4,53 +4,33 @@ require 'json'
 
 class Fizzbuzz
   def initialize(max)
-    @max = max
-  end
-
-  # returns string
-  def to_string
-    array.join ","
-  end
-
-  # returns json hash
-  def to_json
-    JSON.pretty_generate(hash)
-  end
-
-  # return html
-  def to_html
-    ["<table border=\"1\">",
-    1.upto(@max).map do |n|
-      ["  <tr>",
-       "    <td>#{n}</td>",
-       "    <td>#{calc(n)}</td>",
-       "  </tr>"]
-    end,
-     "</table>"].join("\n")
-  end
-
-  private
-  def calc(n)
-    return "FizzBuzz" if n % 15 == 0
-    return "Fizz"     if n % 3 == 0
-    return "Buzz"     if n % 5 == 0
-    return n
-  end
-
-  def array
-    1.upto(@max).map do |n|
-      calc(n)
+    @fizzbuzz = 1.upto(max).map do |n|
+      if n%15 == 0
+        "FizzBuzz"
+      elsif n%3 == 0
+        "Fizz"
+      elsif n%5 == 0
+        "Buzz"
+      else
+        n
+      end
     end
   end
 
-  def hash
-    h = Hash.new
-    1.upto(@max).map do |n|
-      h[n] = calc(n)
-    end
-    h
+  def as_string
+    @fizzbuzz.join ","
+  end
+
+  def as_json
+    @fizzbuzz.to_json
+  end
+
+  def as_html
+    ["<ul>",@fizzbuzz.map {|v| "\t<li>#{v}</li>"},"</ul>"]
   end
 end
 
 fb = Fizzbuzz.new(30)
-puts fb.to_html
+puts fb.as_string
+puts fb.as_json
+puts fb.as_html
